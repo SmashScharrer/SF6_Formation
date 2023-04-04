@@ -1,21 +1,3 @@
-
-###> symfony/framework-bundle ###
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
-###< symfony/framework-bundle ###
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
-
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
-
 # Created by https://www.toptal.com/developers/gitignore/api/phpunit,phpstorm+iml,phpstorm+all,phpstorm,php-cs-fixer,phpcodesniffer,visualstudiocode,node,symfony
 # Edit at https://www.toptal.com/developers/gitignore?templates=phpunit,phpstorm+iml,phpstorm+all,phpstorm,php-cs-fixer,phpcodesniffer,visualstudiocode,node,symfony
 
@@ -467,6 +449,9 @@ modules.xml
 
 # Embedded web-server pid file
 /.web-server-pid
+
+/public/bundles/
+/config/secrets/prod/prod.decrypt.private.php
 
 ### Symfony Patch ###
 /web/css/

@@ -477,3 +477,10 @@ modules.xml
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/phpunit,phpstorm+iml,phpstorm+all,phpstorm,php-cs-fixer,phpcodesniffer,visualstudiocode,node,symfony
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###

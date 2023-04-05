@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Movie;
+use App\Repository\MovieRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,11 +14,9 @@ class MovieController extends AbstractController
 {
 
     #[Route('/{id}', name: 'app_movie', requirements: ['name' => '\d+'], methods: ['GET'])]
-    public function __invoke(int $id, NavbarController $controller): Response
+    public function __invoke(int $id, NavbarController $controller, MovieRepository $movieRepository): Response
     {
-        $movies = $controller::MOVIES;
-
-        $movie = $movies[$id - 1] ?? null;
+        $movie = $movieRepository->findOneBy(["id" => $id]);
 
         if ($movie === null) {
             throw $this->createNotFoundException(sprintf('Movie %d not found', $id));

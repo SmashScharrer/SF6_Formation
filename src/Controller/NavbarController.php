@@ -9,9 +9,9 @@ class NavbarController extends AbstractController
 {
     public const MOVIES =
         [
-            ['title' => 'Du sang et des larmes', 'releasedAt' => 2013, 'productor' => 'Peter Berg', 'genres' => 'war'],
-            ['title' => 'Stalingrad', 'releasedAt' => 2013, 'productor' => 'Fiodor Bondartchouk', 'genres' => 'war'],
-            ['title' => 'USS Indianapolis', 'releasedAt' => 2016, 'productor' => 'Mario Van Peebles', 'genres' => 'war']
+            ['title' => 'Du sang et des larmes', 'releasedAt' => 2013, 'productor' => 'Peter Berg', 'genres' => 'war', 'image' => 'du-sang-et-des-larmes.jpeg'],
+            ['title' => 'Stalingrad', 'releasedAt' => 2013, 'productor' => 'Fiodor Bondartchouk', 'genres' => 'war', 'image' => 'stalingrad.jpeg'],
+            ['title' => 'USS Indianapolis', 'releasedAt' => 2016, 'productor' => 'Mario Van Peebles', 'genres' => 'war', 'image' => 'uss-indianapolis.jpg']
         ]
     ;
 

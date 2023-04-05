@@ -2,32 +2,50 @@
 
 {% block title %}Movie - {{ movie.title }}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('movie') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('movie') }}
+{% endblock %}
+
 {% block body %}
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>{{ movie.title }}</h1>
+        <div class="movie">
+            <div class="row">
+                <div class="col-12">
+                    <h1>{{ movie.title }}</h1>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-bordered">
-                    <thead>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
                         <tr>
                             <th scope="col">ReleasedAt</th>
                             <th scope="col">Productor</th>
                             <th scope="col">Tag</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td>{{ movie.releasedAt }}</td>
                             <td>{{ movie.productor }}</td>
                             <td>{{ movie.genres }}</td>
                         </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('build/images/' ~ movie.image) }}" class="img-fluid" alt="{{ "IMG-" ~ movie.image }}">
+                </div>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MovieRepository;
-use DateTimeImmutable;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -21,10 +21,6 @@ class Movie
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[Assert\NotBlank]
-    #[ORM\Column]
-    private ?DateTimeImmutable $releasedAt = null;
-
     #[Assert\NotBlank( message: 'Veuillez remplir ce champ' )]
     #[Assert\Type( type: 'string', message: 'The value {{ value }} is not a valid {{ type }}' )]
     #[ORM\Column(length: 255)]
@@ -37,10 +33,10 @@ class Movie
 
     #[Assert\NotBlank]
     #[ORM\Column]
-    private ?DateTimeImmutable $createdAt = null;
+    private ?DateTime $createdAt = null;
 
     #[ORM\Column(nullable: true)]
-    private ?DateTimeImmutable $updatedAt = null;
+    private ?DateTime $updatedAt = null;
 
     #[Assert\NotBlank( message: 'Veuillez remplir ce champ' )]
     #[ORM\ManyToOne(inversedBy: 'movies')]
@@ -51,10 +47,25 @@ class Movie
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $imdbID = null;
+
+    #[ORM\Column]
+    private ?int $rating = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $restriction = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?DateTime $releasedAt = null;
+
+    #[ORM\Column]
+    private ?int $year = null;
+
     public function __construct()
     {
-        $this->releasedAt = new DateTimeImmutable();
-        $this->createdAt = new DateTimeImmutable();
+        $this->releasedAt = new DateTime();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int
@@ -70,18 +81,6 @@ class Movie
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getReleasedAt(): ?\DateTimeImmutable
-    {
-        return $this->releasedAt;
-    }
-
-    public function setReleasedAt(\DateTimeImmutable $releasedAt): self
-    {
-        $this->releasedAt = $releasedAt;
 
         return $this;
     }
@@ -110,24 +109,24 @@ class Movie
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?DateTime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
+    public function setUpdatedAt(?DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -154,6 +153,66 @@ class Movie
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getImdbID(): ?string
+    {
+        return $this->imdbID;
+    }
+
+    public function setImdbID(string $imdbID): self
+    {
+        $this->imdbID = $imdbID;
+
+        return $this;
+    }
+
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(int $rating): self
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    public function getRestriction(): ?string
+    {
+        return $this->restriction;
+    }
+
+    public function setRestriction(string $restriction): self
+    {
+        $this->restriction = $restriction;
+
+        return $this;
+    }
+
+    public function getReleasedAt(): ?DateTime
+    {
+        return $this->releasedAt;
+    }
+
+    public function setReleasedAt(?DateTime $releasedAt): self
+    {
+        $this->releasedAt = $releasedAt;
+
+        return $this;
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): self
+    {
+        $this->year = $year;
 
         return $this;
     }

@@ -17,44 +17,7 @@
         <div class="movie">
             <div class="row">
                 <div class="col-12">
-                    <h1>{{ movie.getTitle() }}</h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th scope="col">Année</th>
-                            <th scope="col">Réalisateur</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Slug</th>
-                            <th scope="col">Genre</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{{ movie.getReleasedAt()|date('Y') }}</td>
-                            <td>{{ movie.getProductor() }}</td>
-                            <td>{{ movie.getPrice() }} €</td>
-                            <td>{{ movie.getSlug() }}</td>
-                            <td><span class="badge text-bg-primary">{{ movie.getGenre().getTitle() }}</span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <img src="{{ asset('build/images/' ~ movie.getSlug() ~ '.jpg') }}" class="img-fluid" alt="{{ "IMG-MOVIE-" ~ movie.getID() }}">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="h2">Test OMBD Api</h2>
+                    <h1 class="h1">{{ movie.getTitle() }}</h1>
                 </div>
             </div>
 
@@ -67,19 +30,29 @@
                             <th scope="col">Année</th>
                             <th scope="col">Réalisateur</th>
                             <th scope="col">Genre</th>
+                            <th scope="col">Age limite</th>
+                            <th scope="col">Prix</th>
                             <th scope="col">Note / 10</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{{ movieAPI.Title }}</td>
-                            <td>{{ movieAPI.Year }}</td>
-                            <td>{{ movieAPI.Director }}</td>
-                            <td>{{ movieAPI.Genre }}</td>
-                            <td>{{ movieAPI.imdbRating }}</td>
+                            <td>{{ movie.title }}</td>
+                            <td>{{ movie.year }}</td>
+                            <td>{{ movie.productor }}</td>
+                            <td>{{ movie.genre }}</td>
+                            <td>{{ movie.restriction }}</td>
+                            <td>{{ movie.price }} €</td>
+                            <td>{{ movie.rating }}</td>
                         </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <img src="{{ asset('build/images/' ~ movie.getSlug() ~ '.jpg') }}" class="img-fluid" alt="{{ "IMG-MOVIE-" ~ movie.getID() }}">
                 </div>
             </div>
         </div>

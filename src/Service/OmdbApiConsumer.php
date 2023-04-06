@@ -22,14 +22,38 @@ class OmdbApiConsumer
      * @throws DecodingExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function findMovie(string $movieTitle): array
+    public function findMovie(string $movieTitle, string $movieYear = null): array
     {
         $response = $this->client->request(
             'GET',
             $this->apiLink, [
                 'query' => [
                     'apiKey' => $this->apiKey,
-                    't' => $movieTitle
+                    't' => $movieTitle,
+                    'y' => $movieYear
+                ]
+            ]
+        );
+
+        return $response->toArray();
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+
+    public function findMovieByID(string $movieID): array
+    {
+        $response = $this->client->request(
+            'GET',
+            $this->apiLink, [
+                'query' => [
+                    'apiKey' => $this->apiKey,
+                    'i' => $movieID
                 ]
             ]
         );

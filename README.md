@@ -12,4 +12,6 @@
 - Form (Form theme, Render, Asserts)
 
 ## Day 3
-- Services
+- Services (config with Service file, config with .yml file)
+- Env variables (.env files, config .yml files)
+- Console (create new console command)

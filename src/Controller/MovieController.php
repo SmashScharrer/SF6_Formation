@@ -11,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/movie')]
 class MovieController extends AbstractController
 {
-
     #[Route('/{id}', name: 'app_movie', requirements: ['name' => '\d+'], methods: ['GET'])]
     public function __invoke(int $id, NavbarController $controller, MovieRepository $movieRepository, OmdbApiConsumer $omdbApiConsumer): Response
     {
@@ -22,10 +21,6 @@ class MovieController extends AbstractController
         }
 
         $movieAPI = $omdbApiConsumer->findMovie($movie->getTitle());
-
-        if ($movieAPI === null) {
-            throw $this->createNotFoundException(sprintf('Movie API %d not found', $movie->getTitle()));
-        }
 
         return $this->render('movie/index.html.twig', [
             'movie' => $movie,

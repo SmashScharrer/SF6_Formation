@@ -11,8 +11,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class OmdbApiConsumer
 {
-
-    public function __construct(private HttpClientInterface $client, private string $apiKey)
+    public function __construct(private readonly HttpClientInterface $client, private readonly string $apiKey)
     {
     }
 

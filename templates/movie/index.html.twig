@@ -51,6 +51,37 @@
                     <img src="{{ asset('build/images/' ~ movie.getSlug() ~ '.jpg') }}" class="img-fluid" alt="{{ "IMG-MOVIE-" ~ movie.getID() }}">
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="h2">Test OMBD Api</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Année</th>
+                            <th scope="col">Réalisateur</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Note / 10</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ movieAPI.Title }}</td>
+                            <td>{{ movieAPI.Year }}</td>
+                            <td>{{ movieAPI.Director }}</td>
+                            <td>{{ movieAPI.Genre }}</td>
+                            <td>{{ movieAPI.imdbRating }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

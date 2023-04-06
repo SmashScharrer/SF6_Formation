@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\MovieRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MovieRepository::class)]
 class Movie
@@ -13,30 +13,41 @@ class Movie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Assert\Type( type: 'integer' )]
     private ?int $id = null;
 
+    #[Assert\NotBlank( message: 'Veuillez remplir ce champ' )]
+    #[Assert\Type( type: 'string', message: 'The value {{ value }} is not a valid {{ type }}' )]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column]
-    private ?\DateTimeImmutable $releasedAt = null;
+    private ?DateTimeImmutable $releasedAt = null;
 
+    #[Assert\NotBlank( message: 'Veuillez remplir ce champ' )]
+    #[Assert\Type( type: 'string', message: 'The value {{ value }} is not a valid {{ type }}' )]
     #[ORM\Column(length: 255)]
     private ?string $productor = null;
 
+    #[Assert\NotBlank( message: 'Veuillez remplir ce champ' )]
+    #[Assert\Type( type: 'integer', message: 'The value {{ value }} is not a valid {{ type }}' )]
     #[ORM\Column]
     private ?int $price = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private ?DateTimeImmutable $updatedAt = null;
 
+    #[Assert\NotBlank( message: 'Veuillez remplir ce champ' )]
     #[ORM\ManyToOne(inversedBy: 'movies')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Genre $genre = null;
 
+    #[Assert\Type( type: 'string', message: 'The value {{ value }} is not a valid {{ type }}' )]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 

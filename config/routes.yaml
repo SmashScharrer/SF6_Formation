@@ -6,4 +6,15 @@ controllers:
 
 app_home:
     path: /
-    controller: App\Controller\HomeController::index
+    controller: App\Controller\HomeController
+    methods: GET
+
+app_movie:
+    path: /movie/{id}
+    controller: App\Controller\MovieController
+    methods: GET
+
+app_contact:
+    path: /contact
+    controller: App\Controller\ContactController
+    methods: GET

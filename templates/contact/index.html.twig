@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('contact') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('contact') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {{ form_start(form) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.subject) }}
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

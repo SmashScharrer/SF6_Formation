@@ -6,18 +6,25 @@ use App\Repository\GenreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+#[UniqueEntity('title')]
 #[ORM\Entity(repositoryClass: GenreRepository::class)]
 class Genre
 {
+    #[Assert\Type( type: 'integer' )]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank( message: 'Veuillez remplir ce champ' )]
+    #[Assert\Type( type: 'string', message: 'The value {{ value }} is not a valid {{ type }}' )]
     #[ORM\Column(length: 30, unique: true)]
     private ?string $title = null;
 
+    #[Assert\NotBlank]
     #[ORM\OneToMany(mappedBy: 'genre', targetEntity: Movie::class)]
     private Collection $movies;
 

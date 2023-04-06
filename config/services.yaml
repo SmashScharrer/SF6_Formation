@@ -24,3 +24,4 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Service\OmdbApiConsumer:
         $apiKey: '%env(resolve:API_OMDB_KEY)%'
+        $apiLink: '%env(resolve:API_OMDB_LINK)%'

@@ -11,7 +11,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class OmdbApiConsumer
 {
-    public function __construct(private readonly HttpClientInterface $client, private readonly string $apiKey)
+    public function __construct(private readonly HttpClientInterface $client, private readonly string $apiKey, private readonly string $apiLink)
     {
     }
 
@@ -26,7 +26,7 @@ class OmdbApiConsumer
     {
         $response = $this->client->request(
             'GET',
-            'http://www.omdbapi.com/', [
+            $this->apiLink, [
                 'query' => [
                     'apiKey' => $this->apiKey,
                     't' => $movieTitle

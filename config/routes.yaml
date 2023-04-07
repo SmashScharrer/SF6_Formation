@@ -18,3 +18,11 @@ app_contact:
     path: /contact
     controller: App\Controller\ContactController
     methods: GET
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
